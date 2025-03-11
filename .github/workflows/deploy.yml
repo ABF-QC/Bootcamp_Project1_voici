@@ -30,12 +30,10 @@ jobs:
         shell: bash -l {0}
         run: voici build --contents content --output-dir dist
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./dist 
-      
-
+      - name: Upload artifact for deployment
+        uses: actions/upload-pages-artifact@v1  
+          path: ./dist  
+          
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main'
@@ -53,4 +51,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         with:
-          artifact_name: github-pages
+          artifact_name: github-pages  
