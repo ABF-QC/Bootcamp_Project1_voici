@@ -35,6 +35,9 @@ jobs:
         with:
           path: ./dist
 
+      - name: List files after build
+        run: ls -la ./dist
+
   deploy:
     needs: build
     if: github.ref == 'refs/heads/main'
@@ -48,6 +51,9 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      - name: List files after build
+        run: ls -la ./dist
+        
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
