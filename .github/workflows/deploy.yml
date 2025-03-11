@@ -68,4 +68,4 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git add .
           git commit -m "Deploy to GitHub Pages"
-          git push origin main  # Pushes to the main branch (can be gh-pages if desired)
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
