@@ -30,12 +30,6 @@ jobs:
         shell: bash -l {0}
         run: voici build --contents content --output-dir dist
 
-      - name: Upload artifact for deployment
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: ./dist
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
