@@ -30,6 +30,9 @@ jobs:
         shell: bash -l {0}
         run: voici build --contents content --output-dir dist
 
+      - name: List files after build
+        run: ls -la ./dist
+
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4  # Correct version for uploading
         with:
@@ -52,11 +55,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: github-pages
+          path: ./dist
+
+      - name: List files after downloading artifact
+        run: ls -la ./dist  
 
       - name: Deploy to GitHub Pages
         run: |
           # Deploying files from /dist to GitHub Pages directly
-          cp -r ./dist/* ./docs  # or another deployment command you wish to use
+          cp -r ./dist/* .github/workflows/dist  # or another deployment command you wish to use
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@github.com"
           git add .
