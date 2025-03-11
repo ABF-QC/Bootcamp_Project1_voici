@@ -63,7 +63,7 @@ jobs:
       - name: Deploy to GitHub Pages
         run: |
           # Deploying files from /dist to GitHub Pages directly
-          cp -r ./dist/*  # or another deployment command you wish to use
+          cp -r ./dist/* .github/workflows/dist  # or another deployment command you wish to use
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@github.com"
           git add .
