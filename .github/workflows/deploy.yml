@@ -34,7 +34,8 @@ jobs:
 
       - name: Build the JupyterLite site
         shell: bash -l {0}
-        run: voila ../content/Processing_StnID_ECCC.ipynb --template=lab --strip_sources=False --output-dir dist
+        voici build --contents content --strip_sources==False --output-dir dist
+        #run: voila ../content/Processing_StnID_ECCC.ipynb --template=lab --strip_sources=False --output-dir dist
         #run : voici build --contents content --apps retro --output-dir dist
         # run: voici build --contents content --apps lab --apps retro --strip-sources False --output-dir dist
         #run: voici build --contents content --output-dir dist
