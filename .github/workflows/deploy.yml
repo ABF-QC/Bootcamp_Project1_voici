@@ -34,7 +34,7 @@ jobs:
 
       - name: Build the JupyterLite site
         shell: bash -l {0}
-        run : voici build --contents . --apps lab --apps retro
+        run : voici build --contents content --apps lab --apps retro --output-dir dist
         #run: voici build --contents content --output-dir dist
 
       - name: Upload artifact
