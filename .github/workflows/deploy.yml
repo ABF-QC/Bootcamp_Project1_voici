@@ -26,9 +26,15 @@ jobs:
           micromamba-version: '1.5.8-0'
           environment-file: 'build-environment.yml'
 
+      - name: Ensure notebook metadata allows source code display
+        run: |
+          for notebook in content/*.ipynb; do
+            jq '.metadata.voila.strip_sources = false' "$notebook" > temp.json && mv temp.json "$notebook"
+          done
+
       - name: Build the JupyterLite site
         shell: bash -l {0}
-        run: voici build --contents content --output-dir dist -strip-sources=False
+        run: voici build --contents content --output-dir dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
