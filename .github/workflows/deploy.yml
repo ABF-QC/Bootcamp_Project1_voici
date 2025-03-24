@@ -28,7 +28,7 @@ jobs:
 
       - name: Build the JupyterLite site
         shell: bash -l {0}
-        run: voici build --contents content --strip_sources=False --output-dir dist
+        run: voici build --template=material --contents content --strip_sources=False --output-dir dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
